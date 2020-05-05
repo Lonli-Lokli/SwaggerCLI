@@ -35,15 +35,5 @@ namespace WebApplication1.Controllers
                 })
                 .ToArray();
         }
-        
-        [HttpGet("{{id}}")]
-        public Town Get(int id)
-        {
-            return new Town()
-            {
-                Id = 1,
-                Name = "London"
-            };
-        }
     }
 }
