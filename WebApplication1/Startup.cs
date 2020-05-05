@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebApplication1
@@ -26,7 +27,10 @@ namespace WebApplication1
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opts =>
+            {
+                opts.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
             services.AddSwaggerGen(c =>
             {
